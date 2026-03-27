@@ -2,7 +2,7 @@
 
 Sistem Informasi Manajemen Perjanjian Kerjasama Perguruan Tinggi adalah aplikasi berbasis web yang dirancang untuk membantu pengelolaan data kerja sama institusi secara terpusat, terstruktur, dan terukur. Sistem ini mendukung proses pencatatan mitra, pengelolaan fakultas dan program studi, monitoring status kerja sama, dokumentasi implementasi, serta visualisasi statistik kerja sama dalam bentuk grafik.
 
-Aplikasi ini dibangun dengan arsitektur **separated frontend-backend**, menggunakan **CodeIgniter 4** sebagai backend API dan **React + TypeScript** sebagai frontend modern. Sistem juga mengimplementasikan **JWT Authentication** untuk keamanan akses dan **Chart.js** untuk kebutuhan dashboard visualisasi data. :contentReference[oaicite:1]{index=1}
+Aplikasi ini dibangun dengan arsitektur **separated frontend-backend**, menggunakan **CodeIgniter 4** sebagai backend API dan **React + TypeScript** sebagai frontend modern. Sistem juga mengimplementasikan **JWT Authentication** untuk keamanan akses dan **Chart.js** untuk kebutuhan dashboard visualisasi data. 
 
 ---
 
