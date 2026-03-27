@@ -137,13 +137,12 @@ Tampilan utama sistem yang menampilkan ringkasan informasi, statistik, dan navig
 ### 2. Halaman Data Kerjasama
 Menampilkan daftar data perjanjian kerja sama yang dapat dikelola oleh pengguna sistem.
 ![Data Kerjasama SIM PKS](https://raw.githubusercontent.com/rezafaisal/SIM_PKS/main/images/sim_pks_01.png)
-![Data Kerjasama SIM PKS](https://raw.githubusercontent.com/rezafaisal/SIM_PKS/main/images/sim_pks_02.png)
 
 ---
 
 ### 3. Halaman Form Input dan Edit Kerjasama
 Digunakan untuk input dan edit data kerjasama.
 
-![Implementasi Kerjasama SIM PKS](https://raw.githubusercontent.com/rezafaisal/SIM_PKS/main/images/sim_pks_04.png)
-![Monitoring Kerjasama SIM PKS](https://raw.githubusercontent.com/rezafaisal/SIM_PKS/main/images/sim_pks_03.png)
+![Edit Kerjasama SIM PKS](https://raw.githubusercontent.com/rezafaisal/SIM_PKS/main/images/sim_pks_04.png)
+![Input Kerjasama SIM PKS](https://raw.githubusercontent.com/rezafaisal/SIM_PKS/main/images/sim_pks_03.png)
 
