@@ -123,6 +123,41 @@ Sistem menyediakan visualisasi data kerja sama dalam bentuk grafik untuk membant
 - Statistik status kerja sama
 - Statistik implementasi
 
-## Antarmuka SIM PKS
+## Tampilan Antarmuka SIM PKS
+
+Berikut adalah beberapa tampilan antarmuka dari **Sistem Informasi Manajemen Perjanjian Kerjasama (SIM PKS)**.
+
+### 1. Halaman Dashboard
+Tampilan utama sistem yang menampilkan ringkasan informasi, statistik, dan navigasi utama aplikasi.
+
+![Dashboard SIM PKS](https://raw.githubusercontent.com/rezafaisal/SIM_PKS/main/images/sim_pks_01.png)
+
+---
+
+### 2. Halaman Data Kerjasama
+Menampilkan daftar data perjanjian kerja sama yang dapat dikelola oleh pengguna sistem.
+
+![Data Kerjasama SIM PKS](https://raw.githubusercontent.com/rezafaisal/SIM_PKS/main/images/sim_pks_02.png)
+
+---
+
+### 3. Halaman Detail atau Monitoring Kerjasama
+Digunakan untuk melihat detail informasi kerja sama serta status pelaksanaan perjanjian.
+
+![Monitoring Kerjasama SIM PKS](https://raw.githubusercontent.com/rezafaisal/SIM_PKS/main/images/sim_pks_03.png)
+
+---
+
+### 4. Halaman Implementasi Kerjasama
+Menampilkan data implementasi dari kerja sama yang telah disepakati oleh perguruan tinggi dan mitra.
+
+![Implementasi Kerjasama SIM PKS](https://raw.githubusercontent.com/rezafaisal/SIM_PKS/main/images/sim_pks_04.png)
+
+---
+
+### 5. Halaman Dokumentasi atau Laporan
+Digunakan untuk menampilkan dokumentasi pendukung dan laporan terkait kegiatan kerja sama.
+
+![Dokumentasi SIM PKS](https://raw.githubusercontent.com/rezafaisal/SIM_PKS/main/images/sim_pks_05.png)
 
 
