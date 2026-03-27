@@ -123,11 +123,6 @@ Sistem menyediakan visualisasi data kerja sama dalam bentuk grafik untuk membant
 - Statistik status kerja sama
 - Statistik implementasi
 
-## Keamanan Sistem
+## Antarmuka SIM PKS
 
-Sistem menggunakan **JWT (JSON Web Token)** sebagai mekanisme autentikasi. Setelah login berhasil, pengguna akan mendapatkan token yang digunakan untuk mengakses endpoint yang bersifat protected.
 
-Contoh header autentikasi:
-
-```http
-Authorization: Bearer <your_token>
