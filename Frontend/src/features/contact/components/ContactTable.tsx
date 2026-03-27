@@ -1,0 +1,202 @@
+import React, { useEffect, useState } from "react";
+import { TextInput, Button, Text } from "@mantine/core";
+import {
+  IconPlus,
+  IconSearch,
+  IconNotes,
+  IconCheck,
+  IconX,
+} from "@tabler/icons";
+import Table2 from "components/elements/Table/Table2";
+import { closeAllModals, openConfirmModal, openModal } from "@mantine/modals";
+import { ContactCreateForm, ContactDetail } from ".";
+import { useActiveContact } from "../api/activeContact";
+import { showNotification } from "@mantine/notifications";
+
+const columns = [
+  { id: "no", label: "No" },
+  { id: "name", label: "Nama Penghubung" },
+  { id: "facultys_name", label: "Fakultas" },
+  { id: "position", label: "Jabatan" },
+  { id: "", label: "Aksi" },
+];
+
+const ContactTable = ({ data, dataFaculty }: any) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [datas, setDatas] = useState<any>([]);
+  const { mutateAsync, isLoading } = useActiveContact({
+    config: {
+      onSuccess() {
+        closeAllModals();
+      },
+      onError({ response }) {
+        showNotification({
+          message: (response?.data as any).messages.error,
+          color: "red",
+          icon: IconX({}),
+        });
+      },
+    },
+  });
+  useEffect(() => {
+    if (data) {
+      setDatas(
+        data.map((item: any, index: number) => {
+          return {
+            ...item,
+            no: index + 1,
+          };
+        })
+      );
+    }
+  }, [data]);
+
+  function handleAdd() {
+    openModal({
+      title: (
+        <div className="text-2xl font-bold text-slate-700 px-3 pt-3">
+          Add Penghubung Fakultas
+        </div>
+      ),
+      radius: "md",
+      children: (
+        <ContactCreateForm
+          onSuccess={closeAllModals}
+          dataFaculty={dataFaculty}
+        />
+      ),
+    });
+  }
+
+  function handleDetail(contact: any) {
+    openModal({
+      title: (
+        <div className="text-2xl font-bold text-slate-700 px-3 pt-3">
+          Detail Penghubung Fakultas
+        </div>
+      ),
+
+      children: (
+        <ContactDetail
+          onSuccess={closeAllModals}
+          contact={contact}
+          dataFaculty={dataFaculty}
+        />
+      ),
+      radius: "lg",
+    });
+  }
+
+  function handleActive(id: number, facultys_name: string, status: string) {
+    openConfirmModal({
+      title: "Active Contact",
+      children: (
+        <Text size="sm">
+          Apakah anda yakin {status == "1" ? "Menonaktifkan" : "Mengaktifkan"}{" "}
+          contact ini untuk fakultas {facultys_name}?
+        </Text>
+      ),
+      centered: true,
+      closeOnConfirm: false,
+      confirmProps: status == "1" ? { color: "gray" } : { color: "green" },
+      onConfirm: async () => {
+        await mutateAsync({ id });
+      },
+    });
+  }
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  return (
+    <form
+      className="relative bg-white px-5 pt-4 pb-6 rounded-xl shadow"
+      // onSubmit={handleSubmit}
+    >
+      <div className="flex  justify-between items-top pb-5 ">
+        <div className=" text-gray-900 text-[22px] font-semibold ">
+          Table Penghubung Fakultas
+        </div>
+      </div>
+      <div className="pb-3 flex gap-x-5 mb-3 mt-3 justify-between">
+        <TextInput
+          className="font-medium "
+          placeholder="Cari..."
+          radius="xl"
+          onChange={handleSearch}
+          icon={<IconSearch size="23" className="text-black text-opacity-70" />}
+        />
+        <Button
+          variant="filled"
+          color="orange.4"
+          radius="lg"
+          leftIcon={<IconPlus size="28" className="text-white " stroke="3" />}
+          className="font-semibold shadow"
+          onClick={handleAdd}
+        >
+          Tambah
+        </Button>
+      </div>
+      <Table2
+        header={columns}
+        items={datas}
+        searchTerm={searchTerm}
+        renderItem={(contact) => (
+          <tr key={contact.id} className="">
+            <td
+              key={columns[0].id}
+              className="py-5 px-4 font-medium text-sm text-gray-700"
+            >
+              {contact[columns[0].id as keyof typeof contact]}
+            </td>
+            <td
+              key={columns[1].id}
+              className="py-5 px-4 font-bold capitalize text-sm text-gray-700"
+            >
+              {contact[columns[1].id as keyof typeof contact]}
+            </td>
+            <td
+              key={columns[2].id}
+              className="py-5 px-4 font-medium capitalize text-sm text-gray-700"
+            >
+              {contact[columns[2].id as keyof typeof contact]}
+            </td>
+            <td
+              key={columns[3].id}
+              className="py-5 px-4 font-medium capitalize text-sm text-gray-700"
+            >
+              {contact[columns[3].id as keyof typeof contact]}
+            </td>
+
+            <td className=" py-5 w-40 ">
+              <div className="flex gap-x-3 items-center justify-center">
+                <IconNotes
+                  onClick={() => handleDetail(contact)}
+                  className="border-2 rounded-md text-blue-500 hover:bg-blue-50 cursor-pointer"
+                />
+                <IconCheck
+                  onClick={() =>
+                    handleActive(
+                      contact.id,
+                      contact.facultys_name,
+                      contact.status
+                    )
+                  }
+                  stroke={2.5}
+                  className={`border-2 rounded-md cursor-pointer ${
+                    contact.status == "1"
+                      ? "text-white border-green-400 bg-green-400 hover:bg-green-200}"
+                      : "text-gray-500 hover:bg-gray-50"
+                  } `}
+                />
+              </div>
+            </td>
+          </tr>
+        )}
+      />
+    </form>
+  );
+};
+
+export default ContactTable;
